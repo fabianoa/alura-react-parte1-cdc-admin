@@ -22,7 +22,7 @@ class FormularioLivro extends Component{
                 <form className="pure-form pure-form-aligned"  method="POST" onSubmit={this.enviaForm} >
                   <InputCustomizado id="titulo" label="Título"  type="text" name="titulo" value={this.state.titulo}  onChange={this.setTitulo}/>
                   <InputCustomizado id="preco" label="Preço"  type="text" name="preco" value={this.state.preco}  onChange={this.setPreco}/>
-                  <SelectCustomizado id="autorId" label="Autor"  onChange={this.setAutorId} listaAutores={this.props.listaAutores}/>
+                  <SelectCustomizado id="autorId" label="Autor" autorId={this.state.autorId} onChange={this.setAutorId} listaAutores={this.props.listaAutores}/>
                                   
                   <div className="pure-control-group">                                  
                     <label></label> 
@@ -43,7 +43,7 @@ class FormularioLivro extends Component{
           type:'post',
           data: JSON.stringify({titulo:this.state.titulo,preco:this.state.preco,autorId:this.state.autorId}),
           success: function(novaLsitagem){
-            PubSub.publish('atualiza-lista-livro',novaLsitagem);
+            PubSub.publish('atualiza-lista-livros',novaLsitagem);
             this.setState({titulo:"",preco:"",autorId:""})
               //this.props.callbackAtualizaListagem(resposta);
           }.bind(this),  //.bind(this),  //necessario o bind para obter o this.serState

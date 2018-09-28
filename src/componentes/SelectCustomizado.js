@@ -14,7 +14,7 @@ export default class SelectCustomizado extends Component{
         return (
          <div className="pure-control-group">
             <label htmlFor={this.props.id}>{this.props.label}</label> 
-               <select value={this.props.autorId} name="autorId" onChange={this.props.onChange}>
+               <select value={this.props.autorId} name={this.props.name} onChange={this.props.onChange}>
                      <option value="">Selecione</option>
                      {
                          this.props.listaAutores.map(function(autor){
